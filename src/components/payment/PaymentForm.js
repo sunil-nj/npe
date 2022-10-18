@@ -43,8 +43,16 @@ function LinearProgressWithLabel(props) {
   );
 }
 
+let uniqueId = Date.now().toString(36) + Math.random().toString(36).substring(2);
+console.log(uniqueId);
+// document.getElementById("unique").innerHTML =
+//   Math.random().toString(36).substring(2) + (new Date()).getTime().toString(36);
+
+
+
 export default function PaymentForm({ onClose, setSnackBarOpen, setIsLoading }) {
   const initState = {
+    systemGenerate_id: "",
     senderAccountId: "",
     senderAccountTpe: "",
     recepientPhoneNumber: "",
@@ -65,6 +73,7 @@ export default function PaymentForm({ onClose, setSnackBarOpen, setIsLoading }) 
     setIsLoading(true);
    
     const payload = {
+      systemGenerate_id: uniqueId,
       sender_account_id: state.senderAccountId,
       sender_account_type: state.senderAccountTpe && state.senderAccountTpe,
       recipient_phone_number: state.recepientPhoneNumber,
@@ -91,7 +100,7 @@ export default function PaymentForm({ onClose, setSnackBarOpen, setIsLoading }) 
     inputRef,
   } = useForm({
     initState,
-    callback: submit,
+    callback: submit
   });
 
   let isValidForm =
@@ -207,7 +216,7 @@ export default function PaymentForm({ onClose, setSnackBarOpen, setIsLoading }) 
           value={state.description}
         />
         <br />
-        
+        value={state.uniqueId}
       </div>
 
       <Divider className="divider-margin" />
