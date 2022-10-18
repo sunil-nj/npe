@@ -52,7 +52,7 @@ console.log(uniqueId);
 
 export default function PaymentForm({ onClose, setSnackBarOpen, setIsLoading }) {
   const initState = {
-    systemGenerate_id: "",
+    transaction_id: "",
     senderAccountId: "",
     senderAccountTpe: "",
     recepientPhoneNumber: "",
@@ -73,7 +73,7 @@ export default function PaymentForm({ onClose, setSnackBarOpen, setIsLoading }) 
     setIsLoading(true);
    
     const payload = {
-      systemGenerate_id: uniqueId,
+      transaction_id: uniqueId,
       sender_account_id: state.senderAccountId,
       sender_account_type: state.senderAccountTpe && state.senderAccountTpe,
       recipient_phone_number: state.recepientPhoneNumber,
